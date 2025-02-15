@@ -20,13 +20,10 @@ Compile the code using a MATLAB license (Tier-2, WICE Cluster).
 
 **Command to load MATLAB module and compile:**
 ```
-module load MATLAB/2023b
+module load MATLAB/2023b-r1
 mcc -m TeddyTool_v1_2p.m -a WFDE5Factors.m WFDE5Factors_LST.m wfde5_tiles.m leap_year.m \
-local_solar_time.m calc_coordinates_global_land.m merge_tiles.m write_netcdf_tiles.m \
-write_netcdf_dailyval.m parsave.m \
--I /apps/leuven/rocky8/icelake/2022b/software/MATLAB/2023b/toolbox/finance \
--I /apps/leuven/rocky8/icelake/2022b/software/MATLAB/2023b/toolbox/fininst \
--I /apps/leuven/rocky8/icelake/2022b/software/MATLAB/2023b/toolbox/parallel
+local_solar_time.m calc_coordinates_global_land.m write_netcdf_tiles.m \
+write_netcdf_dailyval.m parsave.m
 ```
 
 ### **Step 2: Transfer and Execution**  
