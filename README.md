@@ -37,8 +37,8 @@ Create the SLURM job file and configuration file (TeddyTool.ini).
 #SBATCH --nodes=1                   # Number of nodes
 #SBATCH --ntasks-per-node=1         # Tasks per node
 #SBATCH -A 2022_203                 # Project account
-#SBATCH --cpus-per-task=124         # CPUs per task
-#SBATCH --mem-per-cpu=2012          # Memory per CPU (MB)
+#SBATCH --cpus-per-task=91         # CPUs per task
+#SBATCH --mem-per-cpu=2612          # Memory per CPU (MB)
 #SBATCH -o s85_2015_log.txt         # Standard output log
 #SBATCH -e s85_2015_out.txt         # Error log
 
@@ -49,14 +49,14 @@ module load MCR/R2023b.9             # Load MATLAB Compiler Runtime module
 ```
 To stay within the 72 hours walltime, it was necessary to divide the processing into 5 year blocks and a northern and southern hemisphere job that run sequentially and write into the same output netcdf file.
 The first line of the TeddyTool.ini file was:
-84,-1   !latitude (comma seperated, boundaries when using tiles ...
+84,9   !latitude (comma seperated, boundaries when using tiles ...
 and
--1,-56  !latitude (comma seperated, boundaries when using tiles ...
+9,-56  !latitude (comma seperated, boundaries when using tiles ...
 
 The whole TeddyTool.ini was:
 
 ```
--1,-56                          !latitude (comma seperated, boundaries when using tiles ->see line 18)
+9,-56                          !latitude (comma seperated, boundaries when using tiles ->see line 18)
 -180,180                        !longitude (comma seperated, boundaries when using tiles ->see line 18)
 1                               !select hourly time step for temporal disaggregation (1=1-hourly,2=2-hourly,etc.)
 ../../OUTPUT/obsclim            !output directory
@@ -72,6 +72,6 @@ tas,hurs,rsds,rlds,ps,sfcwind,pr        !select variable(s): tas,hurs,rsds,rlds,
 0    !use LST (local solar time) (1=default) or UTC (0) for data processing?
 1    !consider precipitation on consecutive days: 1=yes, 0=no; doy window flag (ln 13) must be >= 1
 0    !write NaN values for precipitation (0=no=default) in case that no precipitation event can be found in the historical hourly reference dataset (1=yes: in this case mass and energy are not preserved!)
-124  !number of parallel workers
+91  !number of parallel workers
 5    !value>0:use tiles and set tile size; 0:use coordinates in line 1,2
 ```
